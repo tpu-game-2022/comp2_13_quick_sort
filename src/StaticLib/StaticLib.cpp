@@ -7,13 +7,12 @@
 bool quick_sort(item* begin, const item* end)
 {
 	// ToDo: クイックソートで並び替えてください
-	int sort_len = end - begin;
-	if (!begin || !end || sort_len < 0)return false;
-	if (sort_len < 2)return true;
+	if (!begin || !end || end - begin < 0)return false;
+	if (end - begin < 2)return true;
 
-	item* pic = begin + 1;
+	item* pic = begin + (int)(end-begin)/2;
 	item* left = begin;
-	item* right = begin + sort_len - 1;
+	item* right = begin + (end - begin - 1);
 	while (1) {
 
 		while (pic->key > left->key)left++;
@@ -22,6 +21,7 @@ bool quick_sort(item* begin, const item* end)
 		if (left >= right)break;
 
 		change_item(left, right);
+
 		left++;
 		right--;
 	}
