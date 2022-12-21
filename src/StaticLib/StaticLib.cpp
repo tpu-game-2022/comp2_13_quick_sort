@@ -8,12 +8,12 @@ void swap_item(item* p, item* q);
 // クイックソート(引数が不適切であればfalseを返す)
 bool quick_sort(item* begin, const item* end)
 {
-	const int size = end - begin;
+	const int size = (end - begin);
 
 	if (begin == nullptr || end == nullptr || size < 0) return false;
-	if (size < 2) return true;
+	if (size == 1) return true;
 
-	const int pivot = (begin + 1)->key;
+	const int pivot = (begin + size / 2)->key;
 	item* left = begin;
 	item* right = begin + size - 1;
 
