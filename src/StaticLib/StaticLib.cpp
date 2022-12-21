@@ -3,10 +3,46 @@
 
 #include "../include/lib_func.h"
 
+void swap_item(item* p, item* q);
+
 // クイックソート(引数が不適切であればfalseを返す)
 bool quick_sort(item* begin, const item* end)
 {
-	// ToDo: クイックソートで並び替えてください
+	const int size = end - begin;
 
-	return false;
+	if (begin == nullptr || end == nullptr || size < 0) return false;
+	if (size < 2) return true;
+
+	const int pivot = (begin + 1)->key;
+	item* left = begin;
+	item* right = begin + size - 1;
+
+	while (1) {
+		while (left->key < pivot) left++;
+		while (right->key > pivot) right--;
+
+		if (left >= right) break;
+
+		swap_item(left, right);
+
+		left++;
+		right--;
+	}
+
+	if (left < begin) {
+		if (!quick_sort(begin, left)) return false;
+	}
+
+	if (right < end) {
+		if (!quick_sort(right, end)) return false;
+	}
+
+	return true;
+}
+
+void swap_item(item* p, item* q)
+{
+	item tmp = *p;
+	*p = *q;
+	*q = tmp;
 }
