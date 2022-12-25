@@ -7,6 +7,22 @@
 bool quick_sort(item* begin, const item* end)
 {
 	// ToDo: クイックソートで並び替えてください
-
+	if (begin == NULL || end == NULL)return false;
+	const int pivot = (begin + (end - begin) / 2)->key;
+	item* i = begin;
+    item* j = begin + (end - begin);
+	while (1) {
+		while (i->key < pivot)i++;
+		while (j->key > pivot)j--;
+		if (i >= j)break;
+		i++;
+		j--;
+	}
+	if (i - begin >= 2) {
+		quick_sort(begin, i - 1);
+	}
+	if (end - j >= 2) {
+		quick_sort( j+1, end);
+	}
 	return false;
 }
