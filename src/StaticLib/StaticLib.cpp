@@ -7,6 +7,9 @@
 bool quick_sort(item* begin, const item* end)
 {
 	// ToDo: クイックソートで並び替えてください
+	if (begin == NULL || end == NULL || begin > end)
+		return false;
 
-	return false;
+	
+
 }
