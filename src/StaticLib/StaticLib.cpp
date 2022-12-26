@@ -23,16 +23,16 @@ bool quick_sort(item* begin, const item* end)
     item* left = begin;
     item* right = begin + count - 1;
 
-	while (begin->key < end->key)
+	do
     {
-        while ((end->key >= pivot->key) && (begin < end)) end--;
-
-        while ((begin->key <= pivot->key) && (begin < end)) end++;
+        while (pivot->key > left->key)left++;
 
         swap(left, right);
         left++;
         right--;
-    }
+
+    }while(left < right);
+
 
     if (left > begin) {
         if (!quick_sort(begin, left))return false;
