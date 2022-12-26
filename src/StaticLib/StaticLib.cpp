@@ -4,9 +4,4 @@
 #include "../include/lib_func.h"
 
 // クイックソート(引数が不適切であればfalseを返す)
-bool quick_sort(item* begin, const item* end)
-{
-	// ToDo: クイックソートで並び替えてください
 
-	return false;
-}
