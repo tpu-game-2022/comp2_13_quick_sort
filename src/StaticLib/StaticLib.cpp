@@ -12,35 +12,26 @@ void swap (item *x, item *y) {
 }
 
 // クイックソート(引数が不適切であればfalseを返す)
+
 bool quick_sort(item* begin, const item* end)
 {
 	// ToDo: クイックソートで並び替えてください
-	if (begin == NULL || end == NULL) return false;
-    if (begin >= end)return false;
+	if (!begin || !end || end - begin < 0)return false;
+	if (end - begin < 2)return true;
 
-    int count= end - begin;
-	item* pivot = begin + 1;
-    item* left = begin;
-    item* right = begin + count - 1;
+	item* pivod = begin + (int)(end - begin) / 2;
+	item* left = begin;
+	item* right = begin + (end - begin - 1);
 
-	do
-    {
-        while (pivot->key > left->key)left++;
+	while (left < right) {
 
-        swap(left, right);
-        left++;
-        right--;
+		while (pivod->key > left->key)left++;
 
-    }while(left < right);
+		swap(left, right);
 
-
-    if (left > begin) {
-        if (!quick_sort(begin, left))return false;
-    }
-
-    if (right < end) {
-        if (!quick_sort(right, end))return false;
-    }
+		left++;
+		right--;
+	}
 
 	return true;
 }
