@@ -15,6 +15,7 @@ static item* search_front(int key, item* begin, const item* end)
 {
 	while (begin->key <= key && begin < end) 
 		begin++;
+
 	return begin;
 }
 
@@ -22,6 +23,7 @@ static item* search_rear(int key, const item* begin, item* end)
 {
 	while (key <= end->key && begin < end)
 		end--;
+
 	return end;
 }
 
